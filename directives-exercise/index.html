@@ -11,14 +11,20 @@
 <!-- partial:index.partial.html -->
 <div id="app">
   <div class="row">
-    <input v-model="num1" type="number">
+    <input v-model.number="num1" type="number">
     <span>+</span>
-    <input v-model="num2" type="number">
+    <input v-model.number="num2" type="number">
     <span>=</span>
-    <span>{{num1 + num2}}</span>
+    <span>{{ num1 + num2 }}</span>
   </div>
   <div class="row second">
-    <p>My favorite kind of taco is Al Pastor</p>
+      <select v-model.lazy="name">
+        <option>Carne Asada</option>
+        <option>Pollo</option>
+        <option>Bean</option>
+        <option>Al Pastor</option>
+      </select>
+      <p v-show="name">My favorite kind of taco is {{ name }}</p>
   </div>
 </div>
 <!-- partial -->
