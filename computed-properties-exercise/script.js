@@ -2,6 +2,7 @@ const App = {
   data() {
     return {
       selected: '',
+      categories: ['science', 'math', 'poetry', 'history'],
       posts: [
       {
         author: '@vFitzgerald',
@@ -51,8 +52,8 @@ const App = {
       {
         author: '@cBenson',
         title: 'Labore Ipsum Ad Pariatur',
-        label: 'poetry' }],
-
+        label: 'poetry' }
+      ],
 
       newTitle: '',
       newAuthor: '',
@@ -69,6 +70,12 @@ const App = {
       this.newTitle = ''
       this.newAuthor = ''
       this.newLabel = ''
+    }
+  },
+  computed: {
+    filteredBlogs() {
+      let filter = new RegExp(this.selected, 'i')
+      return this.posts.filter(post => post.label.match(filter))
     }
   }
 };
